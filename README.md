@@ -1,6 +1,24 @@
 # wslpath
 Convert Unix and Windows format paths in WSL.
 
+## Example
+Usage is similar to `cygpath.exe`.
+
+    C:\Users\alice>bash -c 'wslpath -u foo\\bar.txt'
+    foo/bar.txt
+
+    C:\Users\alice>bash -c 'wslpath -ua foo\\bar.txt'
+    /mnt/c/Users/alice/foo/bar.txt
+
+    C:\Users\alice>bash -c 'wslpath -ua \\baz'
+    /mnt/c/baz
+
+    C:\Users\alice>bash -c 'wslpath -w /mnt/c/baz'
+    C:\baz
+
+    C:\Users\alice>bash -c 'cd /tmp; wslpath -w foo'
+    wslpath: error: not a windows mount point: foo
+
 ## Usage
     wslpath (-d|-m|-u|-w|-t TYPE) [-f FILE] [OPTION]... NAME...
 
